@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=3 uid="uid://bl7gjkagfjgxd"]
+
+[ext_resource type="Texture2D" uid="uid://cy4va0jjm4l06" path="res://coins/coin-Sheet.png" id="1_6s6wj"]
+[ext_resource type="Script" uid="uid://bbqyvlaw0op23" path="res://coins/coin.gd" id="1_y4vlf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o4235"]
+radius = 7.07107
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejl74"]
+atlas = ExtResource("1_6s6wj")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4pdy"]
+atlas = ExtResource("1_6s6wj")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anchm"]
+atlas = ExtResource("1_6s6wj")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndffk"]
+atlas = ExtResource("1_6s6wj")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cb6ub"]
+atlas = ExtResource("1_6s6wj")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mck3"]
+atlas = ExtResource("1_6s6wj")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s4a65"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejl74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4pdy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_anchm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndffk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cb6ub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mck3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wfle1"]
+radius = 8.0
+
+[node name="Coin" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_y4vlf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_o4235")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2.98023e-08, -2.98023e-08)
+scale = Vector2(0.6875, 0.6875)
+sprite_frames = SubResource("SpriteFrames_s4a65")
+autoplay = "default"
+frame = 1
+frame_progress = 0.737547
+
+[node name="Detector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
+shape = SubResource("CircleShape2D_wfle1")
+
+[connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]

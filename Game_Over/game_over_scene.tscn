@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://kdgx8lu4u6fl"]
+
+[ext_resource type="Script" uid="uid://bhyyusdhtbe6k" path="res://Game_Over/game_over_scene.gd" id="1_hv44q"]
+[ext_resource type="Texture2D" uid="uid://b0mya5fnibrht" path="res://Game_Over/game_over.png" id="1_tnwnk"]
+
+[node name="Game_over_scene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hv44q")
+
+[node name="GameOver" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_tnwnk")
+
+[node name="Quit_nemu" type="Button" parent="."]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 546.0
+offset_right = 267.0
+offset_bottom = 631.0
+theme_override_font_sizes/font_size = 30
+text = "Выйти в меню"
+
+[node name="Load" type="Button" parent="."]
+layout_mode = 0
+offset_left = 930.0
+offset_top = 546.0
+offset_right = 1144.0
+offset_bottom = 638.0
+theme_override_font_sizes/font_size = 30
+text = "Начать снова"
+
+[node name="coin_coult" type="Label" parent="."]
+layout_mode = 0
+offset_left = 181.0
+offset_top = 398.0
+offset_right = 393.0
+offset_bottom = 440.0
+theme_override_font_sizes/font_size = 25
+text = "Кол-во монет:"
+
+[node name="empty_coult" type="Label" parent="."]
+layout_mode = 0
+offset_left = 670.0
+offset_top = 401.0
+offset_right = 882.0
+offset_bottom = 443.0
+theme_override_font_sizes/font_size = 25
+text = "Пало врагов от ваших рук:"
+
+[connection signal="pressed" from="Quit_nemu" to="." method="_on_quit_nemu_pressed"]
+[connection signal="pressed" from="Load" to="." method="_on_load_pressed"]

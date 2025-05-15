@@ -1,0 +1,81 @@
+[gd_scene load_steps=11 format=3 uid="uid://dctfulxrywhut"]
+
+[ext_resource type="Texture2D" uid="uid://dhyr7ufm6q8h2" path="res://oak_woods_v1.0/decorations/shop_anim.png" id="1_x6gss"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6c06t"]
+size = Vector2(110, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8sjw"]
+atlas = ExtResource("1_x6gss")
+region = Rect2(0, 0, 118, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ae2hv"]
+atlas = ExtResource("1_x6gss")
+region = Rect2(118, 0, 118, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tvhji"]
+atlas = ExtResource("1_x6gss")
+region = Rect2(236, 0, 118, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxsoc"]
+atlas = ExtResource("1_x6gss")
+region = Rect2(354, 0, 118, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1cvk"]
+atlas = ExtResource("1_x6gss")
+region = Rect2(472, 0, 118, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y116q"]
+atlas = ExtResource("1_x6gss")
+region = Rect2(590, 0, 118, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fqvtf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8sjw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ae2hv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tvhji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxsoc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1cvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y116q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3t3ok"]
+radius = 36.4966
+
+[node name="Shop" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_6c06t")
+
+[node name="Shop" type="Area2D" parent="."]
+collision_layer = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Shop"]
+position = Vector2(4, -20)
+scale = Vector2(0.990963, 0.990963)
+sprite_frames = SubResource("SpriteFrames_fqvtf")
+autoplay = "default"
+frame = 4
+frame_progress = 0.0578917
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shop"]
+shape = SubResource("CircleShape2D_3t3ok")

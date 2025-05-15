@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbf0bys0ueegc"]
+
+[ext_resource type="Texture2D" uid="uid://ctqo6w4cpr075" path="res://Collecribles/Rock_Icon.png" id="1_cur3t"]
+[ext_resource type="Script" uid="uid://eh480r3w34s2" path="res://Player/resources.gd" id="1_tf72l"]
+[ext_resource type="Texture2D" uid="uid://b84ud5bhc2rrq" path="res://Collecribles/Gold.png" id="2_sdgpd"]
+[ext_resource type="Texture2D" uid="uid://cbv3p5v3xb6o3" path="res://Collecribles/Food_Icon.png" id="3_rhcjr"]
+
+[node name="Resources" type="CanvasLayer"]
+script = ExtResource("1_tf72l")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelConteiner" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -289.0
+offset_top = 23.0
+offset_right = 291.0
+offset_bottom = 81.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelConteiner"]
+layout_mode = 2
+
+[node name="rock" type="TextureRect" parent="Control/PanelConteiner/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_cur3t")
+stretch_mode = 4
+
+[node name="rock_text" type="Label" parent="Control/PanelConteiner/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+
+[node name="gold_icon" type="TextureRect" parent="Control/PanelConteiner/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_sdgpd")
+stretch_mode = 4
+
+[node name="gold_text" type="Label" parent="Control/PanelConteiner/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+
+[node name="eat_icon" type="TextureRect" parent="Control/PanelConteiner/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_rhcjr")
+stretch_mode = 4
+
+[node name="eat_text" type="Label" parent="Control/PanelConteiner/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"

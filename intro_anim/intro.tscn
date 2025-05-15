@@ -1,0 +1,191 @@
+[gd_scene load_steps=41 format=3 uid="uid://c5e381tatlrs4"]
+
+[ext_resource type="Texture2D" uid="uid://bnlva04pp61w5" path="res://intro_anim/1.jpeg" id="1_cdsto"]
+[ext_resource type="Texture2D" uid="uid://dvyl3q5y417w6" path="res://intro_anim/2.jpeg" id="2_xl0hi"]
+[ext_resource type="Texture2D" uid="uid://bihligsx266ft" path="res://intro_anim/3.jpeg" id="3_jixhn"]
+[ext_resource type="Texture2D" uid="uid://bm455jv6qonpw" path="res://intro_anim/4.jpeg" id="4_6h3b0"]
+[ext_resource type="Texture2D" uid="uid://d5ioin13loik" path="res://intro_anim/5.jpeg" id="5_3ctvd"]
+[ext_resource type="Texture2D" uid="uid://b17asl6h8u8yq" path="res://intro_anim/6.jpeg" id="6_cym5s"]
+[ext_resource type="Texture2D" uid="uid://crwyxp6ug6vlc" path="res://intro_anim/7.jpeg" id="7_2ms37"]
+[ext_resource type="Texture2D" uid="uid://c1uh7wwwfrlrs" path="res://intro_anim/8.jpeg" id="8_vlc7j"]
+[ext_resource type="Texture2D" uid="uid://b65e56elqr17q" path="res://intro_anim/9.jpeg" id="9_v18i7"]
+[ext_resource type="Texture2D" uid="uid://go2pn5xg702m" path="res://intro_anim/10.jpeg" id="10_xy8s8"]
+[ext_resource type="Texture2D" uid="uid://858laf8v6ige" path="res://intro_anim/11.jpeg" id="11_gljeb"]
+[ext_resource type="Texture2D" uid="uid://qwdpkcj1i0d6" path="res://intro_anim/12.jpeg" id="12_7jjnn"]
+[ext_resource type="Texture2D" uid="uid://ykd8s4nxj8gh" path="res://intro_anim/13.jpeg" id="13_vun2f"]
+[ext_resource type="Texture2D" uid="uid://snb7gyes0chu" path="res://intro_anim/14.jpeg" id="14_77bfo"]
+[ext_resource type="Texture2D" uid="uid://rswvrsdfjjvj" path="res://intro_anim/15.jpeg" id="15_vk1w6"]
+[ext_resource type="Texture2D" uid="uid://cyu64ipl8ggff" path="res://intro_anim/16.jpeg" id="16_52k5m"]
+[ext_resource type="Texture2D" uid="uid://ji4jpshwjyay" path="res://intro_anim/17.jpeg" id="17_hhkvp"]
+[ext_resource type="Texture2D" uid="uid://ba1qgcf2cihbx" path="res://intro_anim/18.jpeg" id="18_wovpx"]
+[ext_resource type="Texture2D" uid="uid://c4pox6ioy2dh4" path="res://intro_anim/19.jpeg" id="19_fmh0w"]
+[ext_resource type="Texture2D" uid="uid://bev2jvkmmhlmx" path="res://intro_anim/20.jpeg" id="20_j1uda"]
+[ext_resource type="Texture2D" uid="uid://k4ru5vm2vtmn" path="res://intro_anim/21.jpeg" id="21_u1wlg"]
+[ext_resource type="Texture2D" uid="uid://e453praw3rbo" path="res://intro_anim/22.jpeg" id="22_gavu0"]
+[ext_resource type="Texture2D" uid="uid://drdg3m4aw374s" path="res://intro_anim/23.jpeg" id="23_i4gcw"]
+[ext_resource type="Texture2D" uid="uid://tosaxifhe460" path="res://intro_anim/24.jpeg" id="24_ihyw6"]
+[ext_resource type="Texture2D" uid="uid://h8w4ko1ht86e" path="res://intro_anim/25.jpeg" id="25_uvqka"]
+[ext_resource type="Texture2D" uid="uid://cdgyjqtbb0kpo" path="res://intro_anim/26.jpeg" id="26_v1rug"]
+[ext_resource type="Texture2D" uid="uid://p2vqrdo2mk4n" path="res://intro_anim/27.jpeg" id="27_w7v6t"]
+[ext_resource type="Texture2D" uid="uid://pos0yrioykhm" path="res://intro_anim/28.jpeg" id="28_cgg1c"]
+[ext_resource type="Texture2D" uid="uid://b4ibiqw4dftuq" path="res://intro_anim/29.jpeg" id="29_k5fbw"]
+[ext_resource type="Texture2D" uid="uid://cr844ybgkf1i3" path="res://intro_anim/30.jpeg" id="30_n8rxj"]
+[ext_resource type="Texture2D" uid="uid://cah2c74hrnria" path="res://intro_anim/31.jpeg" id="31_v4mbk"]
+[ext_resource type="Texture2D" uid="uid://bor1myosx5cqo" path="res://intro_anim/32.jpeg" id="32_xo4uk"]
+[ext_resource type="Texture2D" uid="uid://2m6favwyimrr" path="res://intro_anim/33.jpeg" id="33_gfs88"]
+[ext_resource type="Texture2D" uid="uid://dhx40an2yr3cb" path="res://intro_anim/34.jpeg" id="34_2iwkn"]
+[ext_resource type="Texture2D" uid="uid://d2ahifcex8dfv" path="res://intro_anim/35.jpeg" id="35_0m4rm"]
+[ext_resource type="Texture2D" uid="uid://retqixl2e81" path="res://intro_anim/36.jpeg" id="36_lq402"]
+[ext_resource type="Texture2D" uid="uid://n53lfg4wt866" path="res://intro_anim/37.jpeg" id="37_n0547"]
+[ext_resource type="Texture2D" uid="uid://beps76k0ekhnq" path="res://intro_anim/38.jpeg" id="38_s4fc1"]
+
+[sub_resource type="GDScript" id="GDScript_d8v12"]
+script/source = "extends Control
+
+@onready var anim_intro: AnimatedSprite2D = $AnimatedSprite2D
+
+
+
+func _ready():
+	# Указываем анимацию, которую хотим проигрывать
+	anim_intro.play(\"intro\")  
+	await anim_intro.animation_finished
+	get_tree().change_scene_to_file(\"res://menu.tscn\")
+"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xkye5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_cdsto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xl0hi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_jixhn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6h3b0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3ctvd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cym5s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2ms37")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_vlc7j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_v18i7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_xy8s8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_gljeb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_7jjnn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_vun2f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_77bfo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_vk1w6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_52k5m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_hhkvp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_wovpx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_fmh0w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_j1uda")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_u1wlg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_gavu0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_i4gcw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_ihyw6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_uvqka")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_v1rug")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_w7v6t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_cgg1c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_k5fbw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_n8rxj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_v4mbk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_xo4uk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_gfs88")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_2iwkn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_0m4rm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_lq402")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_n0547")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_s4fc1")
+}],
+"loop": false,
+"name": &"intro",
+"speed": 15.0
+}]
+
+[node name="Intro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_d8v12")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(574, 324)
+scale = Vector2(2.30522, 2.28571)
+sprite_frames = SubResource("SpriteFrames_xkye5")
+animation = &"intro"

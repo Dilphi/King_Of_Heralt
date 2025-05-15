@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bplfksepj7g4l"]
+
+[ext_resource type="Script" uid="uid://cwa1pwro5kdsr" path="res://stats/health_bar.gd" id="1_l4xa2"]
+[ext_resource type="Texture2D" uid="uid://x0bgxmnsef1p" path="res://hp_bar/indicators.png" id="1_ndcsc"]
+[ext_resource type="Texture2D" uid="uid://dnnau4l71b1vc" path="res://hp_bar/hp2.png" id="2_nitam"]
+[ext_resource type="Texture2D" uid="uid://cmaj1demdasgf" path="res://hp_bar/hp_bar.png" id="4_k2es7"]
+
+[node name="stats" type="CanvasLayer"]
+script = ExtResource("1_l4xa2")
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+modulate = Color(1, 1, 1, 0.784314)
+offset_left = 90.0
+offset_top = 56.0
+offset_right = 248.0
+offset_bottom = 70.0
+value = 45.0
+nine_patch_stretch = true
+texture_under = ExtResource("1_ndcsc")
+texture_progress = ExtResource("2_nitam")
+texture_progress_offset = Vector2(-1.87, 0)
+
+[node name="HpBar" type="Sprite2D" parent="."]
+position = Vector2(138.281, 64.2188)
+scale = Vector2(2.27865, 2.1636)
+texture = ExtResource("4_k2es7")
+
+[node name="regen" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="regen" to="." method="_on_regen_timeout"]

@@ -1,0 +1,13 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bc5flqc33x8h7"]
+
+[ext_resource type="Texture2D" uid="uid://d1t5p5d3nugvl" path="res://Player/20240707dragonHeaderB.png" id="1_ocm2a"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qcwde"]
+texture = ExtResource("1_ocm2a")
+texture_margin_left = 20.0
+texture_margin_top = 10.0
+texture_margin_right = 20.0
+texture_margin_bottom = 10.0
+
+[resource]
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_qcwde")
