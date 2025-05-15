@@ -15,6 +15,7 @@ enum {
 
 var state = MORNING
 var day_count: int
+var night_count: int
 
 func _ready():
 	Global.gold = 0
@@ -70,7 +71,3 @@ func day_text_fade():
 
 func set_day_text():
 	day_text.text = "DAY " + str(day_count)
-
-
-func _on_night_timeout() -> void:
-	pass # Replace with function body.

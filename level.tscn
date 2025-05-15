@@ -666,4 +666,6 @@ position = Vector2(377, 981)
 [connection signal="timeout" from="Collectibles/Timer" to="Collectibles" method="_on_timer_timeout"]
 [connection signal="timeout" from="DayNight" to="." method="_on_day_night_timeout"]
 
+[editable path="Player/Player"]
+[editable path="Player/Player/AttackDirection/DamageBox"]
 [editable path="CanvasLayer/PauseMenu"]

@@ -8,6 +8,8 @@ var max_health = 100
 var old_hp = max_health
 var _health = max_health
 
+
+	
 # Свойство для здоровья
 
 var health:
@@ -25,12 +27,26 @@ var health:
 
 func _ready():
 	health_text.modulate.a = 0  # Скрываем текст
-	health = max_health          # Устанавливаем максимальное здоровье
+	health = max_health         # Начальное здоровье
+
+	if Global.gold >= 15:
+		max_health += 50        # Увеличиваем максимум
+		health = max_health     # Применяем новое здоровье
+
 	health_bar.max_value = max_health
 	health_bar.value = health
 
+
 # Метод для обработки восстановления здоровья
 func _on_regen_timeout() -> void:
-	health += 10
+	# Базовое восстановление
+	var regen := 10
+
+	# Бонус за золото
+	if Global.gold >= 15:
+		regen += 30
+
+	health += regen
 	Global.health = health
+
 	

@@ -1,30 +1,73 @@
 extends Node2D
-@onready var mobs: Node2D = $".."
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-var mushrrom_preload = preload("res://Mobs/mushroom.tscn")
-var spawn_count = 0
+@onready var mobs: Node2D = $".."
+@onready var animation_player = $AnimationPlayer
+var mushroom_preload: PackedScene = preload("res://Mobs/mushroom.tscn")
+var skelet_preload: PackedScene = preload("res://skelets.tscn")
+
+const MAX_SPAWN := 3
+
+var spawned_day := false
+var spawned_night := false
+
+# Состояния времени суток из уровня
+const MORNING = 0
+const DAY     = 1
+const EVENING = 2
+const NIGHT   = 3
 
 func _ready() -> void:
-	Signals.connect("day_time", Callable(self, "_on_time_changed"))
+	Signals.connect("day_time", Callable(self, "_on_day_time_changed"))
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
-func _on_time_changed(state,day_count):
-	spawn_count = 0
-	var rng = randi_range(0,2)
-	if state == 1:
-		for i in (day_count + rng):
+func _on_day_time_changed(state: int, count: int) -> void:
+	if state in [MORNING, DAY]:
+		if spawned_day:
+			return
+		spawned_day = true
+		spawned_night = false  # сбрасываем ночь
+
+		var rng: int = randi_range(0, 2)
+		var amount: int = min(MAX_SPAWN, count + rng)
+		var spawned: int = 0
+
+		while spawned < amount:
 			animation_player.play("spawn")
 			await animation_player.animation_finished
-			spawn_count += 1
-	if spawn_count == day_count + rng:
-		animation_player.play("idle")
-		
+			spawn_mushroom()
+			spawned += 1
 
-func mushrrom_spawn():
-	var  mushrrom = mushrrom_preload.instantiate()
-	mushrrom.position = Vector2(self.position.x,980)
-	mobs.add_child(mushrrom)
+		animation_player.play("idle")
+
+	elif state == NIGHT:  # ✅ только в фазе NIGHT
+		if spawned_night:
+			return
+		spawned_night = true
+		spawned_day = false  # сбрасываем день
+
+		var rng: int = randi_range(0, 2)
+		var amount: int = min(MAX_SPAWN, count + rng)
+		var spawned: int = 0
+
+		while spawned < amount:
+			animation_player.play("spawn_skelet")
+			await animation_player.animation_finished
+			spawn_skelet()
+			spawned += 1
+
+		animation_player.play("idle")
+
+
+# ---------------------------------------------------------
+# ВСПОМОГАТЕЛЬНЫЕ МЕТОДЫ
+# ---------------------------------------------------------
+func spawn_mushroom() -> void:
+	var mob := mushroom_preload.instantiate()
+	mob.position = Vector2(position.x, 980)
+	mobs.add_child(mob)
+
+
+func spawn_skelet() -> void:
+	var mob := skelet_preload.instantiate()
+	mob.position = Vector2(position.x, 980)
+	mobs.add_child(mob)

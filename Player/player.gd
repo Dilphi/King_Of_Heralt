@@ -39,11 +39,13 @@ func _ready():
 
 #Если персонаж находится в прыжке или подении то на него действует гравитация
 func _physics_process(delta):
-	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	if velocity.y > 0:
 		animPlayer.play("Fall")
+
+	# Усиливаем урон за каждое 10 золота: +100%
+	damage_multiplier = 1 + (Global.gold / 10.0)
 	Global.player_damage = damage_basic * damage_multiplier
 	
 	match state:
@@ -62,10 +64,9 @@ func _physics_process(delta):
 		DAMAGE:
 			damage_state()
 
-#Для физических процессов
-	move_and_slide() 
-	
+	move_and_slide()
 	Global.player_pos = self.position
+
 	
 	
 func move_state():
