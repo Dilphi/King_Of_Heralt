@@ -18,6 +18,7 @@ var day_count: int
 var night_count: int
 
 func _ready():
+	Global.start_time = Time.get_ticks_msec() / 1000
 	Global.gold = 0
 	light.enabled = true
 	day_count = 1
@@ -26,8 +27,8 @@ func _ready():
 
 func _process(delta: float) -> void:
 	# Проверяем, достигнуто ли количество монет для перехода ко второму дню
-	if Global.gold >= 15:
-		Global.gold = 0
+	if Global.gold == 18:
+		Global.gold -= 3
 		transition_to_next_day()
 
 func transition_to_next_day():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://c6ipabefr3asb"]
+[gd_scene load_steps=27 format=4 uid="uid://c6ipabefr3asb"]
 
 [ext_resource type="PackedScene" uid="uid://dwhev6bn7fgx0" path="res://Player/player.tscn" id="1_0a565"]
 [ext_resource type="Script" uid="uid://dh1u2f61s3cn0" path="res://level.gd" id="1_68hu0"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://cvljexa6e74or" path="res://Backgraund/Backgrounds/WOODS - Third.png" id="11_ilwjd"]
 [ext_resource type="PackedScene" uid="uid://jk6q3i0qlx0a" path="res://spawn.tscn" id="13_hyg52"]
 [ext_resource type="PackedScene" uid="uid://b4v2s458nks81" path="res://Mobs/mushroom.tscn" id="14_7sa4s"]
+[ext_resource type="PackedScene" uid="uid://dj40kdvdjvtvi" path="res://skelets.tscn" id="18_4c15r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tedde"]
 texture = ExtResource("5_ec3bg")
@@ -658,6 +659,9 @@ occluder = SubResource("OccluderPolygon2D_jx38k")
 
 [node name="Mushroom" parent="." instance=ExtResource("14_7sa4s")]
 position = Vector2(377, 981)
+
+[node name="Skelets" parent="." instance=ExtResource("18_4c15r")]
+position = Vector2(316, 972)
 
 [connection signal="pressed" from="CanvasLayer/PauseMenu/Panel/VBoxContainer/Resume" to="Manager" method="_on_resume_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/Panel/VBoxContainer/Save" to="Manager" method="_on_save_pressed"]

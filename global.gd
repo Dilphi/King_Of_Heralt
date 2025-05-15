@@ -7,3 +7,5 @@ var health: int
 var day_count
 var state 
 var load
+var start_time: int = 0
+var rock = 0

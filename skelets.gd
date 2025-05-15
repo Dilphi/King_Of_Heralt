@@ -65,6 +65,9 @@ func attack_state():
 	await animPlayer.animation_finished
 	state = RECOVER
 
+signal mob_died
+
+
 func chase_state():
 	animPlayer.play("Run")
 	direction = (player - self.position).normalized()
@@ -86,10 +89,12 @@ func damage_state():
 
 func death_state():
 	velocity.x = 0
-	Signals.emit_signal("enemy_died", position)
+	Signals.emit_signal("enemy_died_skelet", position)
 	animPlayer.play("Death")	
 	await animPlayer.animation_finished
-	database.update_mob_death_record()  # Обновление счётчика смертей в базе данных
+	database.add_mob_death("skelet")  # Обновление счётчика смертей в базе данных
+	emit_signal("mob_died")
+
 	queue_free()
 
 func recover_state():
@@ -99,7 +104,7 @@ func recover_state():
 	state = IDLE
 	
 func _on_hit_box_area_entered(area):
-	Signals.emit_signal("enemy_attack", damage)
+	Signals.emit_signal("enemy_attack_skelet", damage)
 
 func _on_mob_hp_no_healths():
 	state = DEATH

@@ -31,14 +31,13 @@ func save_game():
 	if file:
 		file.store_var(Global.gold)  # Сохраняем количество монет
 		file.store_var(player.position)  # Сохраняем позицию игрока как Vector2
-		Db.update_save_record()  # Если нужно обновить БД
+		Db.update_coin_state(Global.gold)
 		file.store_var(Global.health)  # Сохраняем количество монет
 		
 		# Сохраняем текущее время дня и номер дня
 		file.store_var(level.day_count)  # Сохраняем номер дня
 		file.store_var(level.state)      # Сохраняем состояние дня (MORNING, DAY, etc.)
 		
-		Db.update_player_state(Global.health ,Global.gold)
 		print("Игра сохранена.")
 	else:
 		print("Ошибка: невозможно открыть файл для сохранения.")

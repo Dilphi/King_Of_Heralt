@@ -4,14 +4,12 @@ extends CanvasLayer
 @onready var health_text = $"../hp_text"
 @onready var hp_anim = $"../HpAnim"
 
-var max_health = 100
-var old_hp = max_health
-var _health = max_health
+var base_health := 100
+var max_health := base_health
+var old_hp := max_health
+var _health := max_health
 
-
-	
 # Свойство для здоровья
-
 var health:
 	get: return _health
 	set(value):
@@ -27,26 +25,24 @@ var health:
 
 func _ready():
 	health_text.modulate.a = 0  # Скрываем текст
-	health = max_health         # Начальное здоровье
+	
+	# Усиливаем здоровье: за каждые 10 монет +100% здоровья
+	var health_multiplier = 1 + (Global.rock / 10.0)
+	max_health = int(base_health * health_multiplier)
+	health = max_health
 
-	if Global.gold >= 15:
-		max_health += 50        # Увеличиваем максимум
-		health = max_health     # Применяем новое здоровье
-
+	# Установка значений на полоске здоровья
 	health_bar.max_value = max_health
 	health_bar.value = health
-
 
 # Метод для обработки восстановления здоровья
 func _on_regen_timeout() -> void:
 	# Базовое восстановление
 	var regen := 10
 
-	# Бонус за золото
-	if Global.gold >= 15:
-		regen += 30
+	# Усиливаем восстановление за каждые 10 монет: +10 единиц
+	var regen_bonus := int(Global.gold / 10) * 10
+	regen += regen_bonus
 
 	health += regen
 	Global.health = health
-
-	

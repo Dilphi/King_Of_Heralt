@@ -561,7 +561,7 @@ visible = false
 shape = SubResource("CapsuleShape2D_7xymj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-5, -5)
+position = Vector2(-5, -2)
 scale = Vector2(0.66, 0.66)
 sprite_frames = SubResource("SpriteFrames_cj832")
 animation = &"Death"
@@ -608,6 +608,7 @@ scale = Vector2(0.115, 0.115)
 wait_time = 0.6
 autostart = true
 
+[connection signal="mob_died" from="." to="." method="_on_mob_died"]
 [connection signal="body_entered" from="AttackDirection/AttackRange" to="." method="_on_attack_range_body_entered"]
 [connection signal="area_entered" from="AttackDirection/DamageBox/HurtBox" to="Mob_hp" method="_on_hurt_box_area_entered"]
 [connection signal="area_entered" from="AttackDirection/DamageBox/HitBox" to="." method="_on_hit_box_area_entered"]

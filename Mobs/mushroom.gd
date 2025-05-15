@@ -89,7 +89,7 @@ func death_state():
 	Signals.emit_signal("enemy_died", position)
 	animPlayer.play("Death")	
 	await animPlayer.animation_finished
-	database.update_mob_death_record()  # Обновление счётчика смертей в базе данных
+	database.add_mob_death("mushroom")  # Обновление счётчика смертей в базе данных
 	queue_free()
 
 func recover_state():

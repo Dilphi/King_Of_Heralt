@@ -36,7 +36,7 @@ var damage_current
 
 func _ready():
 	Signals.connect("enemy_attack", Callable(self, "_on_damage_received"))
-
+	Signals.connect("enemy_attack_skelet", Callable(self, "_on_damage_received"))
 #Если персонаж находится в прыжке или подении то на него действует гравитация
 func _physics_process(delta):
 	if not is_on_floor():
@@ -45,7 +45,7 @@ func _physics_process(delta):
 		animPlayer.play("Fall")
 
 	# Усиливаем урон за каждое 10 золота: +100%
-	damage_multiplier = 1 + (Global.gold / 10.0)
+	damage_multiplier = 1 + (Global.rock / 10.0)
 	Global.player_damage = damage_basic * damage_multiplier
 	
 	match state:
@@ -115,6 +115,7 @@ func death_state():
 	await get_tree().create_timer(0.5).timeout
 	database.add_player_death()
 	if get_tree() != null:
+		
 		get_tree().change_scene_to_file("res://Game_Over/game_over_scene.tscn")
 
 func attack_state():

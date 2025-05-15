@@ -212,9 +212,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_o5ahb")
 }],
-"loop": true,
+"loop": false,
 "name": &"spawn_skelet",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="Animation" id="Animation_4ko7r"]
@@ -299,7 +299,6 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_yqulk"]
 length = 2.8
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
